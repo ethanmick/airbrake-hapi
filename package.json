@@ -1,0 +1,29 @@
+{
+  "name": "airbrake-hapi",
+  "version": "1.0.0",
+  "description": "A Hapi Plugin that automatically sends internal server errors to Airbrake.io",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Wayfarer247/airbrake-hapi.git"
+  },
+  "keywords": [
+    "Hapi",
+    "Airbrake",
+    "Plugin",
+    "hapi-airbrake",
+    "airbrake-hapi"
+  ],
+  "author": "Ethan Mick",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Wayfarer247/airbrake-hapi/issues"
+  },
+  "homepage": "https://github.com/Wayfarer247/airbrake-hapi"
+}
