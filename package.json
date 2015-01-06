@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/Wayfarer247/airbrake-hapi",
   "dependencies": {
+    "coffee-script": "1.8.0",
     "q": "1.1.2",
     "request":"2.51.0",
     "stack-trace": "0.0.9"
