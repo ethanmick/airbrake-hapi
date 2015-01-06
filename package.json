@@ -25,5 +25,17 @@
   "bugs": {
     "url": "https://github.com/Wayfarer247/airbrake-hapi/issues"
   },
-  "homepage": "https://github.com/Wayfarer247/airbrake-hapi"
+  "homepage": "https://github.com/Wayfarer247/airbrake-hapi",
+  "dependencies": {
+    "q": "1.1.2",
+    "request":"2.51.0",
+    "stack-trace": "0.0.9"
+  },
+  "devDependencies": {
+    "blanket": "1.1.6",
+    "chai": "1.9.1",
+    "hapi": "8.0.0",
+    "mocha": "2.0.1",
+    "sinon": "1.10.3"
+  }
 }
