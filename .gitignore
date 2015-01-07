@@ -27,5 +27,6 @@ node_modules
 # Users Environment Variables
 .lock-wscript
 
+bin
 test/airbrake_info.json
 coverage.html
