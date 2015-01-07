@@ -76,7 +76,7 @@ In the case of an error, you can also listen for `error`:
 ```js
 airbrake = server.plugins['airbrake-hapi'].airbrake
 airbrake.on('error', function(err) {
-	console.log(Error sending to Airbrake!', err)
+	console.log('Error sending to Airbrake!', err)
 });
 ```
 
