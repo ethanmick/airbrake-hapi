@@ -50,7 +50,15 @@ server.register({
 
 Required Options:
 * `id` - The Project ID from Airbrake
+* `key` - The Project API Key
+* `notifierURL` - A URL to tell Airbrake what this project is.
 
+Optional:
+* `name` - The Application Name
+* `version` - The current application version. Airbrake Hapi will automatically try and set this to the current Git Hash, if you are using Git. It runs `git rev-parse HEAD` (run it yourself to see what it returns).
+
+
+This does not track deploys, but maybe it could.
 
 ## Development ##
 Airbrake Hapi is written in [CoffeeScript](http://coffeescript.org/), because I enjoy the easier to use syntax over pure javascript. However, the project is compiled to Javascript on prepublish:

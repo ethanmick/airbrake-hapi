@@ -28,4 +28,4 @@ node_modules
 .lock-wscript
 
 bin
-airbrake_info.json
+test/airbrake_info.json
