@@ -108,5 +108,8 @@ Send a pull request or open an issue! This is being used in production and fitte
 
 # Changelog #
 
+## Version 1.0.2 ###
+* Fixed compiling of coffee-script
+
 ### Version 1.0.0 ###
 * Initial Release
