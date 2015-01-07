@@ -1,6 +1,6 @@
 {
   "name": "airbrake-hapi",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A Hapi Plugin that automatically sends internal server errors to Airbrake.io",
   "author": "Ethan Mick <ethan@ethanmick.com>",
   "homepage": "https://github.com/Wayfarer247/airbrake-hapi",
@@ -14,7 +14,7 @@
     "test": "test"
   },
   "scripts": {
-    "prepublish":"coffee -o bin -c lib/*.coffee",
+    "prepublish": "coffee -o bin -c lib/*.coffee",
     "test": "make test"
   },
   "bugs": {
@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "q": "1.1.2",
-    "request":"2.51.0",
+    "request": "2.51.0",
     "stack-trace": "0.0.9"
   },
   "devDependencies": {
