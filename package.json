@@ -5,7 +5,7 @@
   "author": "Ethan Mick <ethan@ethanmick.com>",
   "homepage": "https://github.com/Wayfarer247/airbrake-hapi",
   "license": "MIT",
-  "main": "bin/airbrake.js",
+  "main": "bin/index.js",
   "repository": {
     "type": "git",
     "url": "git@github.com:Wayfarer247/airbrake-hapi.git"
