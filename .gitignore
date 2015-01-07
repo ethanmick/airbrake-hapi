@@ -29,3 +29,4 @@ node_modules
 
 bin
 test/airbrake_info.json
+coverage.html
