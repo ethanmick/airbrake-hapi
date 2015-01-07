@@ -51,12 +51,34 @@ server.register({
 Required Options:
 * `id` - The Project ID from Airbrake
 * `key` - The Project API Key
-* `notifierURL` - A URL to tell Airbrake what this project is.
 
 Optional:
+* `notifierURL` - A URL to tell Airbrake what this project is.
 * `name` - The Application Name
 * `version` - The current application version. Airbrake Hapi will automatically try and set this to the current Git Hash, if you are using Git. It runs `git rev-parse HEAD` (run it yourself to see what it returns).
 
+
+### Events ###
+On the plugin is registered, you can listen for events to let you know when an error has been sent to Airbrake. You first need to get the plugin reference, and then you can add your event listener for success `sent`
+
+```js
+airbrake = server.plugins['airbrake-hapi'].airbrake
+airbrake.on('sent', function(event) {
+	console.log('Sent to Airbrake!', event)
+	/*
+	Prints:
+	{id: '323423094820', url: 'https://airbrake.io/locate/323423094820'}
+	*/
+});
+```
+
+In the case of an error, you can also listen for `error`:
+```js
+airbrake = server.plugins['airbrake-hapi'].airbrake
+airbrake.on('error', function(err) {
+	console.log(Error sending to Airbrake!', err)
+});
+```
 
 This does not track deploys, but maybe it could.
 

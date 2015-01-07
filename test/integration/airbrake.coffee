@@ -15,17 +15,18 @@ describe 'Airbrake Hapi', ->
       options =
         id: Info.id
         key: Info.key
-        name: 'TEST APP'
-        notifierURL: 'https://github.com/Wayfarer247/airbrake-hapi'
-        version: '1.x'
 
-      airbrake = new AirbrakeInternal({on: (->)}, options)
+      server = on: (->)
+
+      airbrake = new AirbrakeInternal(server, options)
       airbrake.environment = 'production'
       airbrake.start ->
-        airbrake.notify(error, hapiRequest).then (result)->
-          result.id.should.be.ok
-          result.url.should.contain 'https://airbrake.io/locate'
-          done()
+        airbrake.notify(error, hapiRequest)
+
+      airbrake.on 'sent', (event)->
+        event.id.should.be.ok
+        event.url.should.contain 'https://airbrake.io/locate'
+        done()
 
   it 'should error without a proper config', (done)->
     error = new Error('It Broke Here')
@@ -33,16 +34,18 @@ describe 'Airbrake Hapi', ->
       url:
         path: '/testing/test/t'
 
-    options =
-      id: Info.id
-      key: Info.key
+    server = on: (->)
 
-    airbrake = new AirbrakeInternal({on: (->)}, {})
+    airbrake = new AirbrakeInternal(server, {})
     airbrake.environment = 'production'
+
+    airbrake.on 'error', (event)->
+      event.message.should.equal 'options.uri is a required argument'
+      done()
+
     airbrake.start ->
-      airbrake.notify(error, hapiRequest).fail (err)->
-        err.message.should.equal 'options.uri is a required argument'
-        done()
+      airbrake.notify(error, hapiRequest)
+
 
   it 'should fail to load the plugin with no id/key given', (done)->
     server = new Hapi.Server()
@@ -74,12 +77,16 @@ describe 'Airbrake Hapi', ->
       key: Info.key
       name: 'TEST APP'
       notifierURL: 'https://github.com/Wayfarer247/airbrake-hapi'
+      environment: 'production'
 
     server.register {register: Airbrake, options: options}, (err)->
       should.not.exist err
 
       server.inject {method: 'GET', url: '/'}, (res)->
         res.statusCode.should.equal 500
-        setTimeout(->
-          done()
-        , 2000)
+
+    airbrake = server.plugins['airbrake-hapi'].airbrake
+    airbrake.on 'sent', (event)->
+      event.id.should.be.ok
+      event.url.should.contain 'https://airbrake.io/locate'
+      done()

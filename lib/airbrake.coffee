@@ -3,6 +3,7 @@
 #
 # Requires
 #
+EventEmitter = require('events').EventEmitter
 Q = require 'q'
 os = require 'os'
 path = require 'path'
@@ -13,9 +14,10 @@ exec = Q.nfbind(require('child_process').exec)
 
 #
 # The object which handles the responding to events
-class Airbrake
+class Airbrake extends EventEmitter
 
   constructor: (server, options = {})->
+    @server = server
     @id = options.id
     @key = options.key
     @version = options.version
@@ -26,8 +28,9 @@ class Airbrake
       'development'
     ]
     @context(options)
+    @environment = options.environment if options.environment
 
-    server.on 'request-error', (request, err)=>
+    @server.on 'request-error', (request, err)=>
       @notify(err, request)
 
   start: (next)->
@@ -67,12 +70,9 @@ class Airbrake
         message: message
         backtrace: backtrace
 
-    deferred = Q.defer()
-    Request.post {url: @url, json: json}, (e, r, body)->
-      deferred.reject(e) if e
-      deferred.reject() unless body
-      deferred.resolve body
-    deferred.promise
+    Request.post {url: @url, json: json}, (e, r, body)=>
+      return @emit('error', e) if e
+      @emit('sent', body)
 
   context: (options = {})->
     @os = "#{os.hostname()} #{os.type()} #{os.platform()} #{os.arch()} #{os.release()}"

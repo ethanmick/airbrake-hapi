@@ -8,6 +8,7 @@ Airbrake = require('./airbrake');
 #
 exports.register = (server, options, next)->
   airbrake = new Airbrake(server, options)
+  server.expose('airbrake', airbrake);
   airbrake.start(next)
 
 #
