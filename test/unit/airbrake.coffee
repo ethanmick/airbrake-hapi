@@ -1,6 +1,6 @@
 should = require('chai').should()
 Airbrake = require '../../lib/airbrake'
-Info = require '../../airbrake_info.json'
+Info = require '../airbrake_info.json'
 
 describe 'Airbrake', ->
 

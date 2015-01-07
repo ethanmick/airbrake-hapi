@@ -2,7 +2,7 @@ Hapi = require 'hapi'
 should = require('chai').should()
 Airbrake = require '../../lib'
 AirbrakeInternal = require '../../lib/airbrake'
-Info = require '../../airbrake_info.json'
+Info = require '../airbrake_info.json'
 
 describe 'Airbrake Hapi', ->
 
