@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "q": "1.4.1",
-    "request": "2.51.0",
+    "request": "2.69.0",
     "stack-trace": "0.0.9"
   },
   "devDependencies": {
