@@ -3,6 +3,7 @@ A Hapi Plugin that automatically sends internal server errors to [Airbrake.io](h
 
 ## Compatibility ##
 Version 1.0.x -> Hapi 8.x
+Version 2.x   -> Hapi 10.x and Higher
 
 ## Usage ##
 
@@ -107,6 +108,9 @@ Running `make cov` will run the code coverage. Ensure all tests pass first. This
 Send a pull request or open an issue! This is being used in production and fitted towards my needs, but can easily be expanded.
 
 # Changelog #
+
+## Version 2.0.0 ###
+* Updated Hapi to be a peer dependency. Allow for any version of Hapi.
 
 ## Version 1.0.2 ###
 * Fixed compiling of coffee-script
