@@ -2,7 +2,7 @@
 A Hapi Plugin that automatically sends internal server errors to [Airbrake.io](https://airbrake.io/).
 
 ## Compatibility ##
-Version 1.0.x -> Hapi 8.x
+Version 1.0.x -> Hapi 8.x  
 Version 2.x   -> Hapi 10.x and Higher
 
 ## Usage ##
